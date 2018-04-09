@@ -8,6 +8,7 @@ import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
 import Dashboard from '../../views/Dashboard/';
+import RawMaterials from '../../components/RawMaterials/RawMaterials';
 
 class Full extends Component {
   render() {
@@ -21,6 +22,7 @@ class Full extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route path="/raw-materials" name="Raw Materials" component={RawMaterials}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>

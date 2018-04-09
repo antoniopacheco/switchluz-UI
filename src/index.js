@@ -16,11 +16,14 @@ import '../scss/core/_dropdown-menu-right.scss'
 
 // Containers
 import Full from './containers/Full/'
+import Login from './containers/Login/'
+import PrivateRoute from './utils/PrivateRoute';
 
 ReactDOM.render((
   <HashRouter>
     <Switch>
-      <Route path="/" name="Home" component={Full}/>
+      <Route path="/login" name="Login" component={Login}/>
+      <PrivateRoute path="/" name="Home" component={Full}/>
     </Switch>
   </HashRouter>
 ), document.getElementById('root'));
