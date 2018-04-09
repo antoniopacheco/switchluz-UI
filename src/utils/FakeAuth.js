@@ -7,6 +7,7 @@ export const FakeAuth = {
     authenticate(payload,cb,cbun) {
       const URL = AuthPaths.login;
       axios.post(URL,payload).then((response)=>{
+        sessionStorage.setItem('switchLuzAT', response.data.id);
         axios.defaults.params = {};
         axios.defaults.params['access_token'] = response.data.id
         this.isAuthenticated = true
@@ -21,7 +22,16 @@ export const FakeAuth = {
 
     },
     signout(cb) {
-      this.isAuthenticated = false
-      setTimeout(cb, 100)
+      const URL = AuthPaths.logout;
+      axios.post(URL).then((response)=>{
+        setTimeout(cb, 100)
+      });
+      this.isAuthenticated = false;
+      sessionStorage.clear();
+    },
+    logInFromStorage(){
+      axios.defaults.params = {};
+      axios.defaults.params['access_token'] = sessionStorage.getItem('switchLuzAT');
+      this.isAuthenticated = true;
     }
   }

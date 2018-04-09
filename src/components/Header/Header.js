@@ -4,7 +4,9 @@ import {
   NavItem,
   NavbarToggler,
   NavbarBrand,
+  NavLink
 } from 'reactstrap';
+import HeaderDropdown from './HeaderDropdown';
 
 class Header extends Component {
 
@@ -41,6 +43,14 @@ class Header extends Component {
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
+        <Nav className="d-md-down-none" navbar>
+          <NavItem className="px-3">
+            <NavLink href="#">Dashboard</NavLink>
+          </NavItem>
+        </Nav>      
+        <Nav className="ml-auto" navbar>
+          <HeaderDropdown accnt/>
+        </Nav>  
       </header>
     );
   }

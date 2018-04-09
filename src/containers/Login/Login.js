@@ -12,15 +12,26 @@ import {
     InputGroupAddon} from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { FakeAuth } from '../../utils/FakeAuth';
+import axios from 'axios';
 class Login extends Component {
   constructor(){
     super();
+    sessionStorage.getItem('switchLuzAT');
     this.state = {
       redirectToReferrer: false,
       email :'',
       password:''
     }
     this.handleLogin = this.handleLogin.bind(this);
+    if(sessionStorage.getItem('switchLuzAT')){
+      this.hanldeAlreadyLoggedIn();
+    }
+  }
+
+  hanldeAlreadyLoggedIn(){
+    FakeAuth.logInFromStorage();
+   
+    this.state.redirectToReferrer = true;
   }
     
 
